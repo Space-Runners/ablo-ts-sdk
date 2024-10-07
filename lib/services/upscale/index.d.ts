@@ -1,5 +1,4 @@
 import { AxiosInstance } from 'axios';
-import { ISingleImageGenerationResponse } from '../../interfaces/single-image-generation-response.interface';
 export declare class UpscaleService {
     private readonly axios;
     constructor(axios: AxiosInstance);
@@ -9,12 +8,16 @@ export declare class UpscaleService {
      * @param scale - The scale factor for upscaling the image.
      * @returns
      */
-    fromUrl: (imageUrl: string, scale: number) => Promise<ISingleImageGenerationResponse>;
+    fromUrl: (imageUrl: string, scale: number) => Promise<{
+        imageUrl: string;
+    }>;
     /**
      * Upscales an image file to a specified scale.
      * @param imageFile - The image file to be upscaled.
      * @param scale - The scale factor for upscaling the image.
      * @returns
      */
-    fromFile: (imageFile: File, scale: number) => Promise<ISingleImageGenerationResponse>;
+    fromFile: (imageFile: File, scale: number) => Promise<{
+        imageUrl: string;
+    }>;
 }

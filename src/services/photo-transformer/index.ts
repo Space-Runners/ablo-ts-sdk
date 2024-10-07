@@ -32,7 +32,7 @@ export class PhotoTransformerService {
       headers: { 'Content-Type': contentType },
     })
 
-    delete params.imageFile
+    delete (params as any).imageFile
 
     // Handle reference image
     let referenceImageUrl
