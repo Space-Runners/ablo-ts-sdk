@@ -13,7 +13,7 @@ export class StyleService {
    * @param params - The parameters for creating a custom style.
    * @returns A Promise that resolves to the created style.
    */
-  createCustomStyle = async (params: ICreateCustomStyleRequest) => {
+  createCustom = async (params: ICreateCustomStyleRequest) => {
     const { data } = await this.axios.post(`/${StyleService.ENTITY}`, params, {
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -27,7 +27,7 @@ export class StyleService {
    * Retrieves all custom styles.
    * @returns A Promise that resolves to an array of styles.
    */
-  getCustomStyles = async () => {
+  getCustom = async () => {
     const { data } = await this.axios.get<IStyle[]>(
       `/${StyleService.ENTITY}/${StyleService.CUSTOM}`
     )

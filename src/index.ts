@@ -6,6 +6,7 @@ import { ImageMakerService } from './services/image-maker'
 import { PhotoTransformerService } from './services/photo-transformer'
 import { UpscaleService } from './services/upscale'
 import { BackgroundRemoverService } from './services/background-removal'
+import { StyleService } from './services/style'
 
 export class Ablo {
   private axios: AxiosInstance
@@ -15,6 +16,7 @@ export class Ablo {
   public readonly fontMaker: FontMakerService
   public readonly upscale: UpscaleService
   public readonly removeBackground: BackgroundRemoverService
+  public readonly style: StyleService
 
   constructor(apiKey: string, options: IAbloOptions = {}) {
     this.axios = axios.create({
@@ -31,5 +33,6 @@ export class Ablo {
     this.fontMaker = new FontMakerService(this.axios)
     this.upscale = new UpscaleService(this.axios)
     this.removeBackground = new BackgroundRemoverService(this.axios)
+    this.style = new StyleService(this.axios)
   }
 }
