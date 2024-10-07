@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from 'axios'
+import { AxiosInstance } from 'axios'
 import { ISingleImageGenerationResponse } from '../../interfaces/single-image-generation-response.interface'
 
 export class BackgroundRemoverService {
