@@ -1,16 +1,35 @@
-import { IAbloOptions } from './ablo-options.interface'
+import { IAbloOptions } from './interfaces/ablo-options.interface'
 import axios, { AxiosInstance } from 'axios'
+import { StorageService } from './services/storage'
+import { FontMakerService } from './services/fontmaker'
+import { ImageMakerService } from './services/image-maker'
+import { PhotoTransformerService } from './services/photo-transformer'
+import { UpscaleService } from './services/upscale'
+import { BackgroundRemoverService } from './services/background-removal'
 
 export class Ablo {
-  private axiosInstance: AxiosInstance
+  private axios: AxiosInstance
+  public readonly storage: StorageService
+  public readonly photoTransformer: PhotoTransformerService
+  public readonly imageMaker: ImageMakerService
+  public readonly fontMaker: FontMakerService
+  public readonly upscale: UpscaleService
+  public readonly removeBackground: BackgroundRemoverService
 
   constructor(apiKey: string, options: IAbloOptions = {}) {
-    this.axiosInstance = axios.create({
+    this.axios = axios.create({
       baseURL: options.baseUrl || 'https://api.ablo.com',
       headers: {
         'x-api-key': apiKey,
         'Content-Type': 'application/json',
       },
     })
+
+    this.storage = new StorageService(this.axios)
+    this.photoTransformer = new PhotoTransformerService(this.axios, this.storage)
+    this.imageMaker = new ImageMakerService(this.axios)
+    this.fontMaker = new FontMakerService(this.axios)
+    this.upscale = new UpscaleService(this.axios)
+    this.removeBackground = new BackgroundRemoverService(this.axios)
   }
 }
