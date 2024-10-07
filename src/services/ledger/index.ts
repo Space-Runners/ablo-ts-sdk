@@ -8,6 +8,10 @@ export class LedgerService {
 
   constructor(private readonly axios: AxiosInstance) {}
 
+  /**
+   * Retrieves the credits usage by month.
+   * @returns A Promise that resolves to an array of ledger periods.
+   */
   async creditsUsageByMonth(): Promise<ILedgerPeriod[]> {
     const { data } = await this.axios.get<ILedgerPeriod[]>(
       `/${LedgerService.ENTITY}/${LedgerService.CREDITS_USAGE_BY_MONTH}`
@@ -15,6 +19,10 @@ export class LedgerService {
     return data
   }
 
+  /**
+   * Retrieves the credits usage for the current month.
+   * @returns A Promise that resolves to the ledger period for the current month.
+   */
   async creditsUsageThisMonth(): Promise<ILedgerPeriod> {
     const { data } = await this.axios.get<ILedgerPeriod>(
       `/${LedgerService.ENTITY}/${LedgerService.CREDITS_USAGE_THIS_MONTH}`
