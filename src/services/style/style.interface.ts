@@ -6,4 +6,5 @@ export interface IStyle {
   imageUrl: string
   name: string
   type?: StyleType
+  trainingStatus?: string
 }
