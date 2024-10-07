@@ -6,6 +6,7 @@ import { PhotoTransformerService } from './services/photo-transformer';
 import { UpscaleService } from './services/upscale';
 import { BackgroundRemoverService } from './services/background-removal';
 import { StyleService } from './services/style';
+import { LedgerService } from './services/ledger';
 export declare class Ablo {
     private axios;
     readonly storage: StorageService;
@@ -15,5 +16,6 @@ export declare class Ablo {
     readonly upscale: UpscaleService;
     readonly removeBackground: BackgroundRemoverService;
     readonly style: StyleService;
+    readonly ledger: LedgerService;
     constructor(apiKey: string, options?: IAbloOptions);
 }
