@@ -1,7 +1,7 @@
 import { IAbloOptions } from './interfaces/ablo-options.interface'
 import axios, { AxiosInstance } from 'axios'
 import { StorageService } from './services/storage'
-import { FontMakerService } from './services/fontmaker'
+import { FontMakerService } from './services/font-maker'
 import { ImageMakerService } from './services/image-maker'
 import { PhotoTransformerService } from './services/photo-transformer'
 import { UpscaleService } from './services/upscale'

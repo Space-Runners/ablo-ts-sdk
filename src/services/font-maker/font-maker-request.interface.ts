@@ -1,5 +1,5 @@
 import { IImageGenerationRequest } from '../../interfaces/image-generation-request.interface'
 
-export interface IFontmakerRequest extends IImageGenerationRequest {
+export interface IFontMakerRequest extends IImageGenerationRequest {
   text: string
 }

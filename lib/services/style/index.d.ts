@@ -11,12 +11,12 @@ export declare class StyleService {
      * @param params - The parameters for creating a custom style.
      * @returns A Promise that resolves to the created style.
      */
-    createCustomStyle: (params: ICreateCustomStyleRequest) => Promise<any>;
+    createCustom: (params: ICreateCustomStyleRequest) => Promise<any>;
     /**
      * Retrieves all custom styles.
      * @returns A Promise that resolves to an array of styles.
      */
-    getCustomStyles: () => Promise<IStyle[]>;
+    getCustom: () => Promise<IStyle[]>;
     /**
      * Retrieves all styles based on the provided template ID and pinned status.
      * @param templateId - Optional. The ID of the template to filter styles by.
