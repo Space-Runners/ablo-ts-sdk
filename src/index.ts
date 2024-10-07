@@ -7,6 +7,7 @@ import { PhotoTransformerService } from './services/photo-transformer'
 import { UpscaleService } from './services/upscale'
 import { BackgroundRemoverService } from './services/background-removal'
 import { StyleService } from './services/style'
+import { LedgerService } from './services/ledger'
 
 export class Ablo {
   private axios: AxiosInstance
@@ -17,6 +18,7 @@ export class Ablo {
   public readonly upscale: UpscaleService
   public readonly removeBackground: BackgroundRemoverService
   public readonly style: StyleService
+  public readonly ledger: LedgerService
 
   constructor(apiKey: string, options: IAbloOptions = {}) {
     this.axios = axios.create({
@@ -34,5 +36,6 @@ export class Ablo {
     this.upscale = new UpscaleService(this.axios)
     this.removeBackground = new BackgroundRemoverService(this.axios)
     this.style = new StyleService(this.axios)
+    this.ledger = new LedgerService(this.axios)
   }
 }
