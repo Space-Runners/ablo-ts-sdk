@@ -1,3 +1,5 @@
+import { AxiosInstance } from 'axios'
+
 export class UpscaleService {
   constructor(private readonly axios: AxiosInstance) {}
 
