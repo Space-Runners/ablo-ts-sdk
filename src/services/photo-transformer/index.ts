@@ -32,8 +32,6 @@ export class PhotoTransformerService {
       headers: { 'Content-Type': contentType },
     })
 
-    delete (params as any).imageFile
-
     // Handle reference image
     let referenceImageUrl
     if (params.referenceImageFile) {
@@ -50,7 +48,10 @@ export class PhotoTransformerService {
 
     // Run photo transformer
     const response = await this.fromUrl({
-      ...params,
+      styleId: params.styleId,
+      ipAdapterScale: params.ipAdapterScale,
+      samples: params.samples,
+      shouldBypassCache: params.shouldBypassCache,
       imageUrl: uploadUrl.split('?')[0],
       referenceImageUrl,
     })

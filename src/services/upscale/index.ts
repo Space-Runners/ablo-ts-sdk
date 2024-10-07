@@ -1,6 +1,3 @@
-import { AxiosInstance } from 'axios'
-import { ISingleImageGenerationResponse } from '../../interfaces/single-image-generation-response.interface'
-
 export class UpscaleService {
   constructor(private readonly axios: AxiosInstance) {}
 
