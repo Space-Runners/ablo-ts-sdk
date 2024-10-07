@@ -18,7 +18,7 @@ export class Ablo {
 
   constructor(apiKey: string, options: IAbloOptions = {}) {
     this.axios = axios.create({
-      baseURL: options.baseUrl || 'https://api.ablo.com',
+      baseURL: options.baseUrl || 'https://api.ablo.ai',
       headers: {
         'x-api-key': apiKey,
         'Content-Type': 'application/json',
