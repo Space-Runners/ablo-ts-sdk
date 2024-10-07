@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios'
-import { ISingleImageGenerationResponse } from '../../interfaces/single-image-generation-response.interface'
+import { IBackgroundRemovalResponse } from './background-removal-response.interface'
 
 export class BackgroundRemoverService {
   constructor(private readonly axios: AxiosInstance) {}
@@ -9,12 +9,12 @@ export class BackgroundRemoverService {
    * @param imageUrl - The URL of the image to remove the background from.
    * @returns
    */
-  byUrl = async (imageUrl: string): Promise<ISingleImageGenerationResponse> => {
+  byUrl = async (imageUrl: string): Promise<IBackgroundRemovalResponse> => {
     const { data } = await this.axios.post('/background-removal/remove-background-by-url', {
       imageUrl,
     })
 
-    return data
+    return { imageUrl: data.image, creditsRemaining: data.creditsRemaining }
   }
 
   /**
@@ -22,7 +22,7 @@ export class BackgroundRemoverService {
    * @param imageFile - The image file to remove the background from.
    * @returns
    */
-  byFile = async (imageFile: string): Promise<ISingleImageGenerationResponse> => {
+  byFile = async (imageFile: string): Promise<IBackgroundRemovalResponse> => {
     const { data } = await this.axios.post(
       '/background-removal/remove-background-by-image',
       {
@@ -35,6 +35,6 @@ export class BackgroundRemoverService {
       }
     )
 
-    return data
+    return { imageUrl: data.image, creditsRemaining: data.creditsRemaining }
   }
 }
