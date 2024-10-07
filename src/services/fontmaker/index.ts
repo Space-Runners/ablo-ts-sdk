@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios'
 import { IFontmakerRequest } from './fontmaker-request.interface'
-import { IImageGenerationResponse } from '../image-maker/text-to-image-response.interface'
+import { IImageGenerationResponse } from '../../interfaces/image-generation-response.interface'
 
 export class FontMakerService {
   constructor(private readonly axios: AxiosInstance) {}

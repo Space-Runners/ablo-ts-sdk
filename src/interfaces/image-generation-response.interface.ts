@@ -1,4 +1,4 @@
-import { IAbloImage } from '../../interfaces/ablo-image.interface'
+import { IAbloImage } from './ablo-image.interface'
 
 export interface IImageGenerationResponse {
   images: IAbloImage[]

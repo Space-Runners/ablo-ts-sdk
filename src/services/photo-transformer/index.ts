@@ -2,7 +2,7 @@ import { AxiosInstance } from 'axios'
 import { StorageService } from '../storage'
 import { IImageUrlToImageRequest } from './image-url-to-image-request.interface'
 import { IImageFileToImageRequest } from './image-file-to-image-request.interface'
-import { IImageGenerationResponse } from '../image-maker/text-to-image-response.interface'
+import { IImageGenerationResponse } from '../../interfaces/image-generation-response.interface'
 
 export class PhotoTransformerService {
   constructor(

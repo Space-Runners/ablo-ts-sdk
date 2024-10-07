@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios'
 import { ITextToImageRequest } from './text-to-image-request.interface'
-import { IImageGenerationResponse } from './text-to-image-response.interface'
+import { IImageGenerationResponse } from '../../interfaces/image-generation-response.interface'
 
 export class ImageMakerService {
   constructor(private readonly axios: AxiosInstance) {}
