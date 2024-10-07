@@ -3,7 +3,7 @@ import { AxiosInstance } from 'axios'
 export class UpscaleService {
   constructor(private readonly axios: AxiosInstance) {}
 
-  urlToUpscale = async (imageUrl: string, scale: number): Promise<string> => {
+  fromUrl = async (imageUrl: string, scale: number): Promise<string> => {
     const { data } = await this.axios.post('/upscale', {
       imageUrl,
       scale,
@@ -11,7 +11,7 @@ export class UpscaleService {
     return data.image
   }
 
-  imageToUpscale = async (imageFile: File, scale: number): Promise<string> => {
+  fromFile = async (imageFile: File, scale: number): Promise<string> => {
     const { data } = await this.axios.post(
       '/upscale/file',
       {

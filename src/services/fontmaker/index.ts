@@ -5,7 +5,7 @@ import { IImageGenerationResponse } from '../image-maker/text-to-image-response.
 export class FontMakerService {
   constructor(private readonly axios: AxiosInstance) {}
 
-  generateImageFromFont = async (params: IFontmakerRequest): Promise<IImageGenerationResponse> => {
+  run = async (params: IFontmakerRequest): Promise<IImageGenerationResponse> => {
     const { data } = await this.axios.post('/fontmaker', params, {
       headers: {
         'Content-Type': 'multipart/form-data',

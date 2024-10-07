@@ -8,14 +8,14 @@ export class LedgerService {
 
   constructor(private readonly axios: AxiosInstance) {}
 
-  async getCreditsUsageByMonth(): Promise<ILedgerPeriod[]> {
+  async creditsUsageByMonth(): Promise<ILedgerPeriod[]> {
     const { data } = await this.axios.get<ILedgerPeriod[]>(
       `/${LedgerService.ENTITY}/${LedgerService.CREDITS_USAGE_BY_MONTH}`
     )
     return data
   }
 
-  async getCreditsUsageThisMonth(): Promise<ILedgerPeriod> {
+  async creditsUsageThisMonth(): Promise<ILedgerPeriod> {
     const { data } = await this.axios.get<ILedgerPeriod>(
       `/${LedgerService.ENTITY}/${LedgerService.CREDITS_USAGE_THIS_MONTH}`
     )

@@ -10,7 +10,7 @@ export class PhotoTransformerService {
     private readonly storageService: StorageService
   ) {}
 
-  photoTransformerFile = async (
+  fromFile = async (
     params: IImageFileToImageRequest,
     contentType: string,
     referenceImageContentType?: string
@@ -42,7 +42,7 @@ export class PhotoTransformerService {
     }
 
     // Run photo transformer
-    const response = await this.photoTransformerUrl({
+    const response = await this.fromUrl({
       ...params,
       imageUrl: uploadUrl.split('?')[0],
       referenceImageUrl,
@@ -51,9 +51,7 @@ export class PhotoTransformerService {
     return response
   }
 
-  photoTransformerUrl = async (
-    params: IImageUrlToImageRequest
-  ): Promise<IImageGenerationResponse> => {
+  fromUrl = async (params: IImageUrlToImageRequest): Promise<IImageGenerationResponse> => {
     const { data } = await this.axios.post('/photo-transformer', params)
 
     return data
