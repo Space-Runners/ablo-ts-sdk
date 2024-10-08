@@ -12,6 +12,7 @@ import { BillableActionService } from './services/billable-action'
 
 export class Ablo {
   private axios: AxiosInstance
+
   public readonly billableActions: BillableActionService
   public readonly storage: StorageService
   public readonly photoTransformer: PhotoTransformerService
@@ -42,3 +43,18 @@ export class Ablo {
     this.ledger = new LedgerService(this.axios)
   }
 }
+
+export * from './interfaces/ablo-options.interface'
+export * from './interfaces/ablo-image.interface'
+export * from './interfaces/image-generation-request.interface'
+export * from './interfaces/image-generation-response.interface'
+export * from './interfaces/single-image-generation-response.interface'
+export * from './services/background-removal/background-removal-response.interface'
+export * from './services/billable-action/billable-action.interface'
+export * from './services/font-maker/font-maker-request.interface'
+export * from './services/image-maker/image-maker-request.interface'
+export * from './services/ledger/ledger-period.interface'
+export * from './services/photo-transformer/image-file-to-image-request.interface'
+export * from './services/photo-transformer/image-url-to-image-request.interface'
+export * from './services/style/style.interface'
+export * from './services/style/create-custom-style-request.interface'

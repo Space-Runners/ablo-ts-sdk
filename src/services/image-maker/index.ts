@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios'
-import { ITextToImageRequest } from './text-to-image-request.interface'
+import { IImageMakerRequest } from './image-maker-request.interface'
 import { IImageGenerationResponse } from '../../interfaces/image-generation-response.interface'
 
 export class ImageMakerService {
@@ -10,7 +10,7 @@ export class ImageMakerService {
    * @param params - The parameters for the image generation.
    * @returns A Promise that resolves to the generated image.
    */
-  run = async (params: ITextToImageRequest): Promise<IImageGenerationResponse> => {
+  run = async (params: IImageMakerRequest): Promise<IImageGenerationResponse> => {
     const { data } = await this.axios.post('/image-maker', params, {
       headers: {
         'Content-Type': 'multipart/form-data',
