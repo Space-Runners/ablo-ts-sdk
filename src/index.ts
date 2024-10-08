@@ -8,16 +8,18 @@ import { UpscaleService } from './services/upscale'
 import { BackgroundRemoverService } from './services/background-removal'
 import { StyleService } from './services/style'
 import { LedgerService } from './services/ledger'
+import { BillableActionService } from './services/billable-action'
 
 export class Ablo {
   private axios: AxiosInstance
+  public readonly billableActions: BillableActionService
   public readonly storage: StorageService
   public readonly photoTransformer: PhotoTransformerService
   public readonly imageMaker: ImageMakerService
   public readonly fontMaker: FontMakerService
   public readonly upscale: UpscaleService
   public readonly removeBackground: BackgroundRemoverService
-  public readonly style: StyleService
+  public readonly styles: StyleService
   public readonly ledger: LedgerService
 
   constructor(apiKey: string, options: IAbloOptions = {}) {
@@ -29,13 +31,14 @@ export class Ablo {
       },
     })
 
+    this.billableActions = new BillableActionService(this.axios)
     this.storage = new StorageService(this.axios)
     this.photoTransformer = new PhotoTransformerService(this.axios, this.storage)
     this.imageMaker = new ImageMakerService(this.axios)
     this.fontMaker = new FontMakerService(this.axios)
     this.upscale = new UpscaleService(this.axios)
     this.removeBackground = new BackgroundRemoverService(this.axios)
-    this.style = new StyleService(this.axios)
+    this.styles = new StyleService(this.axios)
     this.ledger = new LedgerService(this.axios)
   }
 }
