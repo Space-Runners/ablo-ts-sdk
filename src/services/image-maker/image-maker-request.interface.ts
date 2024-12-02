@@ -1,5 +1,7 @@
-import { IImageGenerationRequest } from '../../interfaces/image-generation-request.interface'
+import { IImageGenerationRequest } from "../../interfaces/image-generation-request.interface";
 
 export interface IImageMakerRequest extends IImageGenerationRequest {
-  freeText: string
+  freeText: string;
+  shouldApplyBadWordGuard?: string;
+  ipInfringementErrorThreshold?: string;
 }
