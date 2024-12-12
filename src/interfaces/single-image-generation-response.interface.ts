@@ -1,6 +1,7 @@
-import { IAbloImage } from './ablo-image.interface'
+import { IAbloImage } from "./ablo-image.interface";
 
 export interface ISingleImageGenerationResponse {
-  image: IAbloImage
-  riskScore?: number
+  image: IAbloImage;
+  riskScore?: number;
+  creditsRemaining?: number;
 }
