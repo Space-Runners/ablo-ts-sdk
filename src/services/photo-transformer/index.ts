@@ -19,8 +19,7 @@ export class PhotoTransformerService {
    */
   fromFile = async (
     params: IImageFileToImageRequest,
-    contentType: string,
-    referenceImageContentType?: string
+    contentType: string
   ): Promise<IImageGenerationResponse> => {
     // First get signed upload url
     const {
@@ -34,11 +33,11 @@ export class PhotoTransformerService {
 
     // Handle reference image
     let referenceImageUrl
-    if (params.referenceImageFile) {
-      if (!referenceImageContentType) {
-        throw new Error('Reference image content type is required')
-      }
-
+    if (
+      params.referenceImageFile &&
+      params.referenceImageFile instanceof File
+    ) {
+      const referenceImageContentType = params.referenceImageFile?.type
       referenceImageUrl = await this.storageService.uploadBlob(
         params.referenceImageFile,
         referenceImageContentType
@@ -64,7 +63,9 @@ export class PhotoTransformerService {
    * @param params - The parameters for the image transformation.
    * @returns A Promise that resolves to the transformed image.
    */
-  fromUrl = async (params: IImageUrlToImageRequest): Promise<IImageGenerationResponse> => {
+  fromUrl = async (
+    params: IImageUrlToImageRequest
+  ): Promise<IImageGenerationResponse> => {
     const { data } = await this.axios.post('/photo-transformer', params)
 
     return data
