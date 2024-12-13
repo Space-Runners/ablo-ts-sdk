@@ -34,9 +34,12 @@ export class Ablo {
 
     this.billableActions = new BillableActionService(this.axios)
     this.storage = new StorageService(this.axios)
-    this.photoTransformer = new PhotoTransformerService(this.axios, this.storage)
-    this.imageMaker = new ImageMakerService(this.axios)
-    this.fontMaker = new FontMakerService(this.axios)
+    this.photoTransformer = new PhotoTransformerService(
+      this.axios,
+      this.storage
+    )
+    this.imageMaker = new ImageMakerService(this.axios, this.storage)
+    this.fontMaker = new FontMakerService(this.axios, this.storage)
     this.upscale = new UpscaleService(this.axios)
     this.removeBackground = new BackgroundRemoverService(this.axios)
     this.styles = new StyleService(this.axios)
