@@ -15,14 +15,14 @@ export class FontMakerService {
    * @returns A Promise that resolves to the generated Fontmaker image.
    */
   run = async (
-    params: IFontMakerRequest,
-    referenceImageContentType?: string
+    params: IFontMakerRequest
   ): Promise<IImageGenerationResponse> => {
     // Handle reference image
-    if (params.referenceImageFile) {
-      if (!referenceImageContentType) {
-        throw new Error('Reference image content type is required')
-      }
+    if (
+      params.referenceImageFile &&
+      params.referenceImageFile instanceof File
+    ) {
+      const referenceImageContentType = params.referenceImageFile?.type
       params.referenceImageUrl = await this.storageService.uploadBlob(
         params.referenceImageFile,
         referenceImageContentType

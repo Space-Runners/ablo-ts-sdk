@@ -15,14 +15,14 @@ export class ImageMakerService {
    * @returns A Promise that resolves to the generated image.
    */
   run = async (
-    params: IImageMakerRequest,
-    referenceImageContentType?: string
+    params: IImageMakerRequest
   ): Promise<IImageGenerationResponse> => {
     // Handle reference image
-    if (params.referenceImageFile) {
-      if (!referenceImageContentType) {
-        throw new Error('Reference image content type is required')
-      }
+    if (
+      params.referenceImageFile &&
+      params.referenceImageFile instanceof File
+    ) {
+      const referenceImageContentType = params.referenceImageFile?.type
       params.referenceImageUrl = await this.storageService.uploadBlob(
         params.referenceImageFile,
         referenceImageContentType
