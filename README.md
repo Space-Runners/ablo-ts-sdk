@@ -48,4 +48,12 @@ const photoTransformerResult = await ablo.photoTransformer.fromUrl({
 })
 console.log('Photo Transformer result:', photoTransformerResult.images)
 
+// Inpainting
+const inpaintingResult = await ablo.inpainting.run({
+  imageUrl: 'https://example.com/image.jpg',
+  maskUrl: 'https://example.com/mask.jpg',
+})
+console.log('Inpainting result:', inpaintingResult.images)
+
+
 ```
