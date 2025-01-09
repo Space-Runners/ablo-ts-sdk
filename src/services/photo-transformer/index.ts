@@ -3,6 +3,7 @@ import { StorageService } from '../storage'
 import { IImageUrlToImageRequest } from './image-url-to-image-request.interface'
 import { IImageFileToImageRequest } from './image-file-to-image-request.interface'
 import { IImageGenerationResponse } from '../../interfaces/image-generation-response.interface'
+import { IInpaintingRequest } from './inpainting-request.interface'
 
 export class PhotoTransformerService {
   constructor(
@@ -68,6 +69,18 @@ export class PhotoTransformerService {
   ): Promise<IImageGenerationResponse> => {
     const { data } = await this.axios.post('/photo-transformer', params)
 
+    return data
+  }
+
+  /**
+   * Edits/inpaints the image based on the mask and provided prompt.
+   * @param params - The parameters for the image generation.
+   * @returns A Promise that resolves to the generated images.
+   */
+  inpaint = async (
+    params: IInpaintingRequest
+  ): Promise<IImageGenerationResponse> => {
+    const { data } = await this.axios.post('/photo-transformer/inpaint', params)
     return data
   }
 }

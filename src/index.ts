@@ -9,7 +9,6 @@ import { BackgroundRemoverService } from './services/background-removal'
 import { StyleService } from './services/style'
 import { LedgerService } from './services/ledger'
 import { BillableActionService } from './services/billable-action'
-import { InpaintingService } from './services/inpainting'
 
 export class Ablo {
   private axios: AxiosInstance
@@ -23,7 +22,6 @@ export class Ablo {
   public readonly removeBackground: BackgroundRemoverService
   public readonly styles: StyleService
   public readonly ledger: LedgerService
-  public readonly inpainting: InpaintingService
 
   constructor(apiKey: string, options: IAbloOptions = {}) {
     this.axios = axios.create({
@@ -46,7 +44,6 @@ export class Ablo {
     this.removeBackground = new BackgroundRemoverService(this.axios)
     this.styles = new StyleService(this.axios)
     this.ledger = new LedgerService(this.axios)
-    this.inpainting = new InpaintingService(this.axios)
   }
 }
 
@@ -62,6 +59,6 @@ export * from './services/image-maker/image-maker-request.interface'
 export * from './services/ledger/ledger-period.interface'
 export * from './services/photo-transformer/image-file-to-image-request.interface'
 export * from './services/photo-transformer/image-url-to-image-request.interface'
+export * from './services/photo-transformer/inpainting-request.interface'
 export * from './services/style/style.interface'
 export * from './services/style/create-custom-style-request.interface'
-export * from './services/inpainting/inpainting-request.interface'
