@@ -9,33 +9,14 @@ export class UpscaleService {
    * @param scale - The scale factor for upscaling the image.
    * @returns
    */
-  fromUrl = async (imageUrl: string, scale: number): Promise<{ imageUrl: string }> => {
+  fromUrl = async (
+    imageUrl: string,
+    scale: number
+  ): Promise<{ imageUrl: string }> => {
     const { data } = await this.axios.post('/upscale', {
       imageUrl,
       scale,
     })
-    return { imageUrl: data.image }
-  }
-
-  /**
-   * Upscales an image file to a specified scale.
-   * @param imageFile - The image file to be upscaled.
-   * @param scale - The scale factor for upscaling the image.
-   * @returns
-   */
-  fromFile = async (imageFile: File, scale: number): Promise<{ imageUrl: string }> => {
-    const { data } = await this.axios.post(
-      '/upscale/file',
-      {
-        image: imageFile,
-        scale,
-      },
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      }
-    )
     return { imageUrl: data.image }
   }
 }
