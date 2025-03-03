@@ -10,28 +10,10 @@ export class BackgroundRemoverService {
    * @returns
    */
   byUrl = async (imageUrl: string): Promise<IBackgroundRemovalResponse> => {
-    const { data } = await this.axios.post('/background-removal/remove-background-by-url', {
-      imageUrl,
-    })
-
-    return { imageUrl: data.image, creditsRemaining: data.creditsRemaining }
-  }
-
-  /**
-   * Removes the background from an image file.
-   * @param imageFile - The image file to remove the background from.
-   * @returns
-   */
-  byFile = async (imageFile: string): Promise<IBackgroundRemovalResponse> => {
     const { data } = await this.axios.post(
-      '/background-removal/remove-background-by-image',
+      '/background-removal/remove-background-by-url',
       {
-        imageFile,
-      },
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
+        imageUrl,
       }
     )
 
