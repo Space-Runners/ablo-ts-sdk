@@ -29,11 +29,8 @@ export class ImageMakerService {
       )
       delete params.referenceImageFile
     }
-    const { data } = await this.axios.post('/image-maker', params, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    })
+    const { data } = await this.axios.post('/image-maker', params)
+
     return data
   }
 }

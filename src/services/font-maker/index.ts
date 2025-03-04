@@ -29,11 +29,8 @@ export class FontMakerService {
       )
       delete params.referenceImageFile
     }
-    const { data } = await this.axios.post('/fontmaker', params, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    })
+    const { data } = await this.axios.post('/fontmaker', params)
+
     return data
   }
 }
