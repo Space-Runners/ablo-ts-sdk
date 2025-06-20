@@ -1,4 +1,4 @@
-import { AxiosHeaders, AxiosInstance } from 'axios'
+import { AxiosInstance } from 'axios'
 
 export class StorageService {
   constructor(private readonly axios: AxiosInstance) { }
@@ -53,10 +53,10 @@ export class StorageService {
     contentType: string,
     options?: { cacheControl?: string }
   ): Promise<string> => {
-    const headers = new AxiosHeaders()
-    headers.append('Content-Type', contentType)
+    const headers: Record<string, string> = {}
+    headers['Content-Type'] = contentType
     if (options?.cacheControl) {
-      headers.append('Cache-Control', options.cacheControl)
+      headers['Cache-Control'] = options.cacheControl
     }
 
     await this.axios.put(url, image, { headers: headers })
