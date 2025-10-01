@@ -1,7 +1,7 @@
 import { AxiosHeaders, AxiosInstance } from "axios";
 
 export class StorageService {
-  private static readonly cdnMap: Record<string, string> = {
+  private static readonly CDN_MAP: Record<string, string> = {
     "ablo-images-staging": "https://ablo-staging.b-cdn.net",
     "ablo-images-production": "https://ablo-production.b-cdn.net",
   };
@@ -61,9 +61,17 @@ export class StorageService {
 
     await this.axios.put(url, image, { headers: headers });
 
+    
     const imageUrl = url.split("?")[0];
-    const bucketName = imageUrl.split("/")[3];
-    const cdnBaseUrl = StorageService.cdnMap[bucketName];
+
+    const parsedUrl = new URL(imageUrl);
+    const pathSegments = parsedUrl.pathname.split("/").filter(Boolean);
+    const bucketName = pathSegments[0];
+
+    const cdnBaseUrl = StorageService.CDN_MAP[bucketName];
+    if (!cdnBaseUrl) {
+      return imageUrl;
+    }
     const cdnUrl = imageUrl.replace("https://storage.googleapis.com/" + bucketName, cdnBaseUrl);
     return cdnUrl;
   };
