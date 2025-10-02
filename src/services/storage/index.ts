@@ -54,14 +54,13 @@ export class StorageService {
    */
   upload = async (url: string, image: File | ArrayBuffer | string, contentType: string, options?: { cacheControl?: string }): Promise<string> => {
     const headers = new AxiosHeaders();
-    headers.append("Content-Type", contentType);
+    headers.set("Content-Type", contentType);
     if (options?.cacheControl) {
-      headers.append("Cache-Control", options.cacheControl);
+      headers.set("Cache-Control", options.cacheControl);
     }
 
     await this.axios.put(url, image, { headers: headers });
 
-    
     const imageUrl = url.split("?")[0];
 
     const parsedUrl = new URL(imageUrl);
