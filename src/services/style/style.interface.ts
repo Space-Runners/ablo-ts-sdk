@@ -5,6 +5,7 @@ export interface IStyle {
   id: string
   imageUrl: string
   name: string
+  previewImageUrl: string
   type?: StyleType
   trainingStatus?: string
 }
