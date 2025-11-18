@@ -5,4 +5,5 @@ export interface IImageGenerationRequest {
   ipAdapterScale?: number
   samples?: number
   shouldBypassCache?: boolean
+  aspectRatio?: string
 }
