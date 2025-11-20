@@ -2,4 +2,5 @@ import { IImageGenerationRequest } from '../../interfaces/image-generation-reque
 
 export interface IImageUrlToImageRequest extends IImageGenerationRequest {
   imageUrl: string
+  prompt?: string
 }
