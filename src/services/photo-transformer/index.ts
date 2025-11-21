@@ -54,6 +54,7 @@ export class PhotoTransformerService {
       shouldBypassCache: params.shouldBypassCache,
       imageUrl: uploadUrl.split('?')[0],
       referenceImageUrl,
+      aspectRatio: params.aspectRatio,
     })
 
     return response
