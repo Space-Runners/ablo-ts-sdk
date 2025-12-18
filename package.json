@@ -3,13 +3,13 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "A TypeScript SDK for Ablo Services",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 20",
+    "lint": "eslint \"src/**/*.ts\" --fix",
     "prepare": "npm run build"
   },
   "keywords": [
@@ -23,12 +23,12 @@
     "lib/**/*"
   ],
   "devDependencies": {
-    "@types/node": "^22.7.4",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "eslint": "^8.45.0",
+    "@types/node": "^24.10.1",
+    "@typescript-eslint/eslint-plugin": "^8.41.0",
+    "@typescript-eslint/parser": "^8.41.0",
+    "eslint": "^9.34.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.6.2"
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "@types/axios": "^0.14.0",

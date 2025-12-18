@@ -55,6 +55,7 @@ export class PhotoTransformerService {
       imageUrl: uploadUrl.split('?')[0],
       referenceImageUrl,
       aspectRatio: params.aspectRatio,
+      colors: params.colors,
     })
 
     return response

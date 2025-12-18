@@ -6,4 +6,5 @@ export interface IImageGenerationRequest {
   samples?: number
   shouldBypassCache?: boolean
   aspectRatio?: string
+  colors?: string[]
 }
